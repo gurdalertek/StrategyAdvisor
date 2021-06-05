@@ -1,6 +1,7 @@
-let ModelArrayServer;
+// let ModelArrayServer;
+var compression = require("compression");
 const express = require("express");
-const mongoose = require("mongoose");
+// const mongoose = require("mongoose");
 const path = require("path");
 var cors = require("cors");
 const app = express();
@@ -9,7 +10,7 @@ const { configureDatabase } = require("./middleware/db");
 const { consumeData } = require("./libs/Utils");
 
 // Body-parser Middleware
-app.use(express.json());
+app.use(compression(express.json()));
 app.use(cors());
 
 // DB Config
