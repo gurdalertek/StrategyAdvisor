@@ -2,7 +2,9 @@ import React, { Component } from "react";
 import "./Question.css";
 import axios from "axios";
 import { Button } from "react-bootstrap";
-import { BrowserRouter as Router, Switch, Route, Link } from "react-router-dom";
+// import { BrowserRouter as Router, Switch, Route, Link } from "react-router-dom";
+import { BrowserRouter as Link } from "react-router-dom";
+
 export default class Question extends Component {
   constructor(props) {
     super(props);

@@ -4,7 +4,7 @@ import { Provider } from "react-redux";
 import store from "../store";
 // import { loadUser } from '../actions/authActions';
 import AppNavbar from "../components/AppNavbar";
-import { loadReCaptcha } from "react-recaptcha-google";
+// import { loadReCaptcha } from "react-recaptcha-google";
 
 class App extends Component {
   // componentDidMount() {

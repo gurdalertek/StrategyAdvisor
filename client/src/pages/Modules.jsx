@@ -1,6 +1,7 @@
 import React, { Component } from "react";
 import { Button } from "react-bootstrap";
-import { BrowserRouter as Router, Switch, Route, Link } from "react-router-dom";
+// import { BrowserRouter as Router, Switch, Route, Link } from "react-router-dom";
+import { Link } from "react-router-dom";
 
 import ChannelImage from "../pics/module_images_700x400/Channel.jpg";
 import CustomerImage from "../pics/module_images_700x400/Customer.jpg";
