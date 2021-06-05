@@ -7,7 +7,7 @@ import {
   Collapse,
   Navbar,
   NavbarToggler,
-  NavbarBrand,
+  // NavbarBrand,
   Nav,
   // NavItem,
   Container,
@@ -19,7 +19,7 @@ import PropTypes from "prop-types";
 // import Logout from "./auth/Logout";
 import { BrowserRouter as Router, Switch, Route, Link } from "react-router-dom";
 import { Modules, Records, ModulePage, Welcome } from "../pages";
-import * as ReactBootstrap from "react-bootstrap";
+// import * as ReactBootstrap from "react-bootstrap";
 
 class AppNavbar extends Component {
   state = {
@@ -80,16 +80,17 @@ class AppNavbar extends Component {
         <Router>
           <Navbar color="dark" dark expand="sm" className="mb-5">
             <Container>
-              <Link to="/">
-                <NavbarBrand href="/">StrategyAdvisor Cloud</NavbarBrand>
+              <Link to="/" className="navbar-brand">
+                StrategyAdvisor Cloud
               </Link>
               <NavbarToggler onClick={this.toggle} />
               <Collapse isOpen={this.state.isOpen} navbar>
-                <Nav className="mr-auto" navbar>
-                  <Link to="/Modules">
-                    <ReactBootstrap.Nav.Link href="#modules">
-                      Modules
-                    </ReactBootstrap.Nav.Link>
+                <Nav className="nav nav-pills nav-justified" navbar>
+                  <Link
+                    to="/Modules"
+                    className="nav-link btn btn-primary text-white"
+                  >
+                    Modules
                   </Link>
                 </Nav>
               </Collapse>

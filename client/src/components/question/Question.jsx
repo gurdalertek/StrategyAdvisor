@@ -292,6 +292,8 @@ export default class Question extends Component {
                     {suggestionID}
                   </li>
                 );
+              } else {
+                return true;
               }
             })}
           </ul>

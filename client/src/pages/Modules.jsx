@@ -16,17 +16,17 @@ class Modules extends Component {
     return (
       <div>
         <div className="container">
-          <h2 class="flex text-uppercase text-center display-4 pb-2">
+          <h2 className="flex text-uppercase text-center display-4 pb-2">
             Modules
           </h2>
           <br />
           <div>
-            <div class="row">
-              <div class="col-lg-4 col-sm-6 mb-4">
-                <div class="card h-100 text-center">
-                  <img class="card-img-top" src={ChannelImage} alt="" />
-                  <div class="card-body">
-                    <h4 class="card-title text-uppercase">Channel</h4>
+            <div className="row">
+              <div className="col-lg-4 col-sm-6 mb-4">
+                <div className="card h-100 text-center">
+                  <img className="card-img-top" src={ChannelImage} alt="" />
+                  <div className="card-body">
+                    <h4 className="card-title text-uppercase">Channel</h4>
                     <Link
                       to={{
                         pathname: "/ModulePage",
@@ -41,11 +41,11 @@ class Modules extends Component {
                   </div>
                 </div>
               </div>
-              <div class="col-lg-4 col-sm-6 mb-4">
-                <div class="card h-100 text-center">
-                  <img class="card-img-top" src={CustomerImage} alt="" />
-                  <div class="card-body">
-                    <h4 class="card-title text-uppercase">Customer</h4>
+              <div className="col-lg-4 col-sm-6 mb-4">
+                <div className="card h-100 text-center">
+                  <img className="card-img-top" src={CustomerImage} alt="" />
+                  <div className="card-body">
+                    <h4 className="card-title text-uppercase">Customer</h4>
                     <Link
                       to={{
                         pathname: "/ModulePage",
@@ -58,11 +58,11 @@ class Modules extends Component {
                   </div>
                 </div>
               </div>
-              <div class="col-lg-4 col-sm-6 mb-4">
-                <div class="card h-100 text-center">
-                  <img class="card-img-top" src={ValueChainImage} alt="" />
-                  <div class="card-body">
-                    <h4 class="card-title text-uppercase">Value Chain</h4>
+              <div className="col-lg-4 col-sm-6 mb-4">
+                <div className="card h-100 text-center">
+                  <img className="card-img-top" src={ValueChainImage} alt="" />
+                  <div className="card-body">
+                    <h4 className="card-title text-uppercase">Value Chain</h4>
                     <Link
                       to={{
                         pathname: "/ModulePage",
@@ -75,11 +75,11 @@ class Modules extends Component {
                   </div>
                 </div>
               </div>
-              <div class="col-lg-4 col-sm-6 mb-4">
-                <div class="card h-100 text-center">
-                  <img class="card-img-top" src={KnowledgeImage} alt="" />
-                  <div class="card-body">
-                    <h4 class="card-title text-uppercase">Knowledge</h4>
+              <div className="col-lg-4 col-sm-6 mb-4">
+                <div className="card h-100 text-center">
+                  <img className="card-img-top" src={KnowledgeImage} alt="" />
+                  <div className="card-body">
+                    <h4 className="card-title text-uppercase">Knowledge</h4>
                     <Link
                       to={{
                         pathname: "/ModulePage",
@@ -92,11 +92,11 @@ class Modules extends Component {
                   </div>
                 </div>
               </div>
-              <div class="col-lg-4 col-sm-6 mb-4">
-                <div class="card h-100 text-center">
-                  <img class="card-img-top" src={MegaImage} alt="" />
-                  <div class="card-body">
-                    <h4 class="card-title text-uppercase">Mega</h4>
+              <div className="col-lg-4 col-sm-6 mb-4">
+                <div className="card h-100 text-center">
+                  <img className="card-img-top" src={MegaImage} alt="" />
+                  <div className="card-body">
+                    <h4 className="card-title text-uppercase">Mega</h4>
                     <Link
                       to={{
                         pathname: "/ModulePage",
@@ -109,11 +109,15 @@ class Modules extends Component {
                   </div>
                 </div>
               </div>
-              <div class="col-lg-4 col-sm-6 mb-4">
-                <div class="card h-100 text-center">
-                  <img class="card-img-top" src={OrganizationImage} alt="" />
-                  <div class="card-body">
-                    <h4 class="card-title text-uppercase">Organization</h4>
+              <div className="col-lg-4 col-sm-6 mb-4">
+                <div className="card h-100 text-center">
+                  <img
+                    className="card-img-top"
+                    src={OrganizationImage}
+                    alt=""
+                  />
+                  <div className="card-body">
+                    <h4 className="card-title text-uppercase">Organization</h4>
                     <Link
                       to={{
                         pathname: "/ModulePage",
@@ -126,11 +130,11 @@ class Modules extends Component {
                   </div>
                 </div>
               </div>
-              <div class="col-lg-4 col-sm-6 mb-4">
-                <div class="card h-100 text-center">
-                  <img class="card-img-top" src={ProductImage} alt="" />
-                  <div class="card-body">
-                    <h4 class="card-title text-uppercase">Product</h4>
+              <div className="col-lg-4 col-sm-6 mb-4">
+                <div className="card h-100 text-center">
+                  <img className="card-img-top" src={ProductImage} alt="" />
+                  <div className="card-body">
+                    <h4 className="card-title text-uppercase">Product</h4>
                     <Link
                       to={{
                         pathname: "/ModulePage",

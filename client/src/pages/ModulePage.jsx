@@ -24,16 +24,16 @@ class ModulePage extends Component {
   render() {
     return (
       <div className="container">
-        <h2 class="flex">{this.props.location.moduleTitle}</h2>
+        <h2 className="flex">{this.props.location.moduleTitle}</h2>
         <br />
-        <div class="row">
-          <div class="col-3 card card-block">
+        <div className="row">
+          <div className="col-3 card card-block">
             <img
               src={`${process.env.PUBLIC_URL}/pics/${this.state.modulePhotoURL}.jpg`}
               alt="Question"
             />
           </div>
-          <div class="col-8 card card-block">
+          <div className="col-8 card card-block">
             <Question
               handleSuggestionImage={this.setSuggestionImage}
               moduleId={this.props.location.moduleId}
