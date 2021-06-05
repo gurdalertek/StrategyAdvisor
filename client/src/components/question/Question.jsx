@@ -1,13 +1,8 @@
 import React, { Component } from "react";
 import "./Question.css";
-import axios from "axios"
+import axios from "axios";
 import { Button } from "react-bootstrap";
-import {
-  BrowserRouter as Router,
-  Switch,
-  Route,
-  Link
-} from "react-router-dom";
+import { BrowserRouter as Router, Switch, Route, Link } from "react-router-dom";
 export default class Question extends Component {
   constructor(props) {
     super(props);
@@ -22,23 +17,25 @@ export default class Question extends Component {
     this.findSuggestion = this.findSuggestion.bind(this);
     this.checkLabel = this.checkLabel.bind(this);
     this.store = [];
-    this.exportedSuggestions =  [];
-    this.moduleStart =  {};
+    this.exportedSuggestions = [];
+    this.moduleStart = {};
     this.nodes = [];
     this.state = {
       question: [],
       answer: -1,
       type: "",
-      isSurveyFinished: false
+      isSurveyFinished: false,
     };
   }
 
-   componentDidMount() {
-     axios.get("https://strategy-advisor.herokuapp.com/api/getModule", {
-        params: { moduleId: this.props.moduleId }
+  componentDidMount() {
+    const clientURL = process.env.REACT_APP_CLIENT_URL;
+    axios
+      .get(`${clientURL}/api/getModule`, {
+        params: { moduleId: this.props.moduleId },
       })
-      .then(res => {
-        console.log(res.data[0])
+      .then((res) => {
+        console.log(res.data[0]);
         if (res.data.length === 0) {
           new Error("Cannot get");
         } else {
@@ -47,11 +44,11 @@ export default class Question extends Component {
           this.exportedSuggestions = res.data[0].suggestions;
           this.setState({
             question: this.nodes[0],
-            type: this.nodes[0].nodeType
+            type: this.nodes[0].nodeType,
           });
         }
       })
-      .catch(e => console.log(e));
+      .catch((e) => console.log(e));
   }
 
   findGenuineAnswer(answer) {
@@ -60,7 +57,7 @@ export default class Question extends Component {
 
   setAnswer(answer) {
     this.setState({
-      answer
+      answer,
     });
   }
 
@@ -68,10 +65,10 @@ export default class Question extends Component {
     let genuineAnswer = this.findGenuineAnswer(this.state.answer);
     let nextQuestionId;
     if (this.state.type === "Question") {
-      this.moduleStart.textEN = ""
+      this.moduleStart.textEN = "";
       if (this.state.answer === -1) return;
-      nextQuestionId = this.state.question.answers["answer" + genuineAnswer]
-        .nextQuestion;
+      nextQuestionId =
+        this.state.question.answers["answer" + genuineAnswer].nextQuestion;
 
       if (this.state.question.answers.isLinkToSuggestion) {
         let answer = this.state.answer;
@@ -86,8 +83,9 @@ export default class Question extends Component {
           ) {
             answer = 10 - answer;
           }
-          const currentSuggestionId = this.state.question.answers["answer" + 1]
-            .RelatedToSuggestion.relatedSuggestionID;
+          const currentSuggestionId =
+            this.state.question.answers["answer" + 1].RelatedToSuggestion
+              .relatedSuggestionID;
           this.suggestions.set(
             currentSuggestionId,
             (this.suggestions.get(currentSuggestionId) || []).concat(answer)
@@ -100,8 +98,9 @@ export default class Question extends Component {
           ) {
             answer = 10 - answer;
           }
-          const currentSuggestionId = this.state.question.answers["answer" + 2]
-            .RelatedToSuggestion.relatedSuggestionID;
+          const currentSuggestionId =
+            this.state.question.answers["answer" + 2].RelatedToSuggestion
+              .relatedSuggestionID;
           this.suggestions.set(
             currentSuggestionId,
             (this.suggestions.get(currentSuggestionId) || []).concat(answer)
@@ -109,35 +108,34 @@ export default class Question extends Component {
         }
       }
     } else {
-        nextQuestionId = this.state.question.nextNode;
+      nextQuestionId = this.state.question.nextNode;
     }
     this.store.push(this.state);
     let nextQuestion = this.findQuestionFromId(nextQuestionId);
     if (!nextQuestion) {
       this.calculateSuggestions();
-      this.props.handleSuggestionImage()
+      this.props.handleSuggestionImage();
       this.setState({
-
-        isSurveyFinished: true
+        isSurveyFinished: true,
       });
       return;
     }
-    if(nextQuestion.nodeType === "Continue"){
+    if (nextQuestion.nodeType === "Continue") {
       nextQuestionId = nextQuestion.nextNode;
       nextQuestion = this.findQuestionFromId(nextQuestionId);
       if (!nextQuestion) {
-        console.log('Suggestion page')
+        console.log("Suggestion page");
         this.calculateSuggestions();
-        this.props.handleSuggestionImage()
+        this.props.handleSuggestionImage();
         this.setState({
-          isSurveyFinished: true
+          isSurveyFinished: true,
         });
       }
     }
     this.setState({
       question: nextQuestion,
       answer: -1,
-      type: nextQuestion.nodeType
+      type: nextQuestion.nodeType,
     });
   }
 
@@ -174,15 +172,14 @@ export default class Question extends Component {
           "answer" + this.findGenuineAnswer(this.state.answer)
         ].RelatedToSuggestion.isRelated
       ) {
-          const suggestion = this.suggestions
-          .get(
-            this.state.question.answers[
-              "answer" + this.findGenuineAnswer(this.state.answer)
-            ].RelatedToSuggestion.relatedSuggestionID
-          )
-          if(suggestion){
-            suggestion.pop();  
-          }
+        const suggestion = this.suggestions.get(
+          this.state.question.answers[
+            "answer" + this.findGenuineAnswer(this.state.answer)
+          ].RelatedToSuggestion.relatedSuggestionID
+        );
+        if (suggestion) {
+          suggestion.pop();
+        }
       } else {
         console.log(
           this.state.question.answers[
@@ -225,33 +222,32 @@ export default class Question extends Component {
     }
   }
 
-  
-
   render() {
-    let questionBool = false
-    if (this.state.type === "Question"){
-      questionBool = 
-      <div className="choices">
-        <span>{this.checkLabel(1)}</span>
-        <span className="hSpacer" />
-        {this.numbers.map((number, index) => {
-          return (
-            <span
-              key={index}
-              onClick={() => this.setAnswer(number)}
-              className={`choice ${this.state.type + "C"} ${this.isMarked(
-                number
-              )}`}
-            >
-              {number}
-            </span>
-          );
-        })}
-        <span className="hSpacer" />
-        <span>{this.checkLabel(2)}</span>
-      </div>
+    let questionBool = false;
+    if (this.state.type === "Question") {
+      questionBool = (
+        <div className="choices">
+          <span>{this.checkLabel(1)}</span>
+          <span className="hSpacer" />
+          {this.numbers.map((number, index) => {
+            return (
+              <span
+                key={index}
+                onClick={() => this.setAnswer(number)}
+                className={`choice ${this.state.type + "C"} ${this.isMarked(
+                  number
+                )}`}
+              >
+                {number}
+              </span>
+            );
+          })}
+          <span className="hSpacer" />
+          <span>{this.checkLabel(2)}</span>
+        </div>
+      );
     } else {
-      questionBool = <div></div>
+      questionBool = <div></div>;
     }
     const defaultRender = (
       <div className="questionContainer">
@@ -262,7 +258,7 @@ export default class Question extends Component {
             {this.state.type === "Continue" ? "" : this.state.question.titleEN}
           </div>
           <div className="vSpacer" />
-          <div>{questionBool}</div>          
+          <div>{questionBool}</div>
           <div className="vSpacer" />
           <button className="button blue" onClick={this.handleBack}>
             Back
@@ -277,24 +273,28 @@ export default class Question extends Component {
       </div>
     );
     let renderedView;
-    const mapSort1 = new Map([...this.percentageMap.entries()].sort((a, b) => b[1] - a[1]));
+    const mapSort1 = new Map(
+      [...this.percentageMap.entries()].sort((a, b) => b[1] - a[1])
+    );
     console.log(mapSort1);
     if (this.state.isSurveyFinished) {
       renderedView = (
         <div>
           <div>Suggestions</div>
           <ul>
-            {
-              [...this.percentageMap.keys()].map(suggestionID =>
-                { if(suggestionID !== "undefined") {
-                  return <li>{Math.round(this.percentageMap.get(suggestionID))}%, {suggestionID}</li>
-                  }
-                }    
-              )
-            }
+            {[...this.percentageMap.keys()].map((suggestionID) => {
+              if (suggestionID !== "undefined") {
+                return (
+                  <li>
+                    {Math.round(this.percentageMap.get(suggestionID))}%,{" "}
+                    {suggestionID}
+                  </li>
+                );
+              }
+            })}
           </ul>
           <Link to="/Modules">
-          <Button variant="primary">Go Back to Modules Page</Button>
+            <Button variant="primary">Go Back to Modules Page</Button>
           </Link>
         </div>
       );

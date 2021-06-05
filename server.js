@@ -1,28 +1,24 @@
-let ModelArrayServer
-const express = require('express')
-const mongoose = require('mongoose')
-const path = require('path')
-var cors = require('cors')
-const app = express()
-const {
-  configureDatabase
-} = require('./middleware/db')
+let ModelArrayServer;
+const express = require("express");
+const mongoose = require("mongoose");
+const path = require("path");
+var cors = require("cors");
+const app = express();
+const { configureDatabase } = require("./middleware/db");
 
-const {
-  consumeData
-} = require('./libs/Utils')
+const { consumeData } = require("./libs/Utils");
 
 // Body-parser Middleware
-app.use(express.json())
-app.use(cors())
+app.use(express.json());
+app.use(cors());
 
 // DB Config
 // Connect to MongoDB
-let arrayModule
-const ModelArray = consumeData(configureDatabase)
-console.log("Model Array: ")
-console.log(ModelArray)
-arrayModule = ModelArray
+let arrayModule;
+const ModelArray = consumeData(configureDatabase);
+console.log("Model Array: ");
+console.log(ModelArray);
+arrayModule = ModelArray;
 /*
 const myURI = "mongodb+srv://ahmet:T8Ud2ldLy2MfvwFE@strategyadvisorcloud.8pemb.mongodb.net/anket?retryWrites=true&w=majority"
 mongoose.connect(myURI, {
@@ -41,20 +37,20 @@ mongoose.connect(myURI, {
 }).catch(err => console.log(`Error: ${err}`))
 */
 
-app.get("/api/getModule",async (req, res) => {
-    console.log(req.query.moduleId)
-    var result = arrayModule.filter(obj => {
-        return obj.moduleNo == req.query.moduleId
-      })
+app.get("/api/getModule", async (req, res) => {
+  console.log(req.query.moduleId);
+  var result = arrayModule.filter((obj) => {
+    return obj.moduleNo == req.query.moduleId;
+  });
 
-    res.send(result)
-})
+  res.send(result);
+});
 
 // Use Routes
-app.use('/api/users', require('./routes/api/users'))
-app.use('/api/auth', require('./routes/api/auth'))
-app.use('/api/records', require('./routes/api/records'))
-app.use('/api/getModule',require('./routes/api/getmodel'))
+app.use("/api/users", require("./routes/api/users"));
+app.use("/api/auth", require("./routes/api/auth"));
+app.use("/api/records", require("./routes/api/records"));
+app.use("/api/getModule", require("./routes/api/getmodel"));
 /*
 app.get('/', (req, res) => {
   res.send('Hello World!')
@@ -62,16 +58,16 @@ app.get('/', (req, res) => {
 */
 
 // Serve static assets if in production
-if(process.env.NODE_ENV == 'production'){
-  app.use(express.static('client/build'));
+if (process.env.NODE_ENV == "production") {
+  app.use(express.static("client/build"));
 
-  app.get('*', (req, res) => {
-    res.sendFile(path.resolve(__dirname, 'client', 'build', 'index.html'))
+  app.get("*", (req, res) => {
+    res.sendFile(path.resolve(__dirname, "client", "build", "index.html"));
   });
 }
 
-
 // Port
-const port = process.env.PORT || 5000
+// const port = process.env.PROD_SERVER_PORT;
+const port = process.env.DEV_SERVER_PORT || 5000;
 
-app.listen(port, () => console.log(`Server started on port ${port}`))
+app.listen(port, () => console.log(`Server started on port ${port}`));
