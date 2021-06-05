@@ -47,8 +47,8 @@ app.get("/api/getModule", async (req, res) => {
 });
 
 // Use Routes
-app.use("/api/users", require("./routes/api/users"));
-app.use("/api/auth", require("./routes/api/auth"));
+// app.use("/api/users", require("./routes/api/users"));
+// app.use("/api/auth", require("./routes/api/auth"));
 app.use("/api/records", require("./routes/api/records"));
 app.use("/api/getModule", require("./routes/api/getmodel"));
 /*
