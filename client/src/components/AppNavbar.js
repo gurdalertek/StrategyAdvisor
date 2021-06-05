@@ -85,10 +85,10 @@ class AppNavbar extends Component {
               </Link>
               <NavbarToggler onClick={this.toggle} />
               <Collapse isOpen={this.state.isOpen} navbar>
-                <Nav className="nav nav-pills nav-justified" navbar>
+                <Nav className="nav nav-pills nav-justified pl-4" navbar>
                   <Link
                     to="/Modules"
-                    className="nav-link btn btn-primary text-white"
+                    className="nav-link btn btn-sm btn-primary text-white "
                   >
                     Modules
                   </Link>
