@@ -26,7 +26,7 @@ class Modules extends Component {
                 <div className="card h-100 text-center">
                   <img className="card-img-top" src={ChannelImage} alt="" />
                   <div className="card-body">
-                    <h4 className="card-title text-uppercase">Channel</h4>
+                    <h4 className="card-title text-uppercase mb-3">Channel</h4>
                     <Link
                       to={{
                         pathname: "/ModulePage",
@@ -47,7 +47,7 @@ class Modules extends Component {
                 <div className="card h-100 text-center">
                   <img className="card-img-top" src={CustomerImage} alt="" />
                   <div className="card-body">
-                    <h4 className="card-title text-uppercase">Customer</h4>
+                    <h4 className="card-title text-uppercase mb-3">Customer</h4>
                     <Link
                       to={{
                         pathname: "/ModulePage",
@@ -66,7 +66,9 @@ class Modules extends Component {
                 <div className="card h-100 text-center">
                   <img className="card-img-top" src={ValueChainImage} alt="" />
                   <div className="card-body">
-                    <h4 className="card-title text-uppercase">Value Chain</h4>
+                    <h4 className="card-title text-uppercase mb-3">
+                      Value Chain
+                    </h4>
                     <Link
                       to={{
                         pathname: "/ModulePage",
@@ -85,7 +87,9 @@ class Modules extends Component {
                 <div className="card h-100 text-center">
                   <img className="card-img-top" src={KnowledgeImage} alt="" />
                   <div className="card-body">
-                    <h4 className="card-title text-uppercase">Knowledge</h4>
+                    <h4 className="card-title text-uppercase mb-3">
+                      Knowledge
+                    </h4>
                     <Link
                       to={{
                         pathname: "/ModulePage",
@@ -104,7 +108,7 @@ class Modules extends Component {
                 <div className="card h-100 text-center">
                   <img className="card-img-top" src={MegaImage} alt="" />
                   <div className="card-body">
-                    <h4 className="card-title text-uppercase">Mega</h4>
+                    <h4 className="card-title text-uppercase mb-3">Mega</h4>
                     <Link
                       to={{
                         pathname: "/ModulePage",
@@ -127,7 +131,9 @@ class Modules extends Component {
                     alt=""
                   />
                   <div className="card-body">
-                    <h4 className="card-title text-uppercase">Organization</h4>
+                    <h4 className="card-title text-uppercase mb-3">
+                      Organization
+                    </h4>
                     <Link
                       to={{
                         pathname: "/ModulePage",
@@ -146,7 +152,7 @@ class Modules extends Component {
                 <div className="card h-100 text-center">
                   <img className="card-img-top" src={ProductImage} alt="" />
                   <div className="card-body">
-                    <h4 className="card-title text-uppercase">Product</h4>
+                    <h4 className="card-title text-uppercase mb-3">Product</h4>
                     <Link
                       to={{
                         pathname: "/ModulePage",

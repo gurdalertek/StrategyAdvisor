@@ -228,7 +228,7 @@ export default class Question extends Component {
     let questionBool = false;
     if (this.state.type === "Question") {
       questionBool = (
-        <div className="choices">
+        <div className="choices justify-content-center">
           <span>{this.checkLabel(1)}</span>
           <span className="hSpacer" />
           {this.numbers.map((number, index) => {
@@ -254,19 +254,25 @@ export default class Question extends Component {
     const defaultRender = (
       <div className="questionContainer">
         <div className="buttonHolder">
-          <div className={`title`}>{this.moduleStart.textEN}</div>
+          {/* <div className={`title`}>{this.moduleStart.textEN}</div> */}
+          <div className="title">{this.moduleStart.textEN}</div>
           <div className="vSpacer" />
-          <div className="subtitle">
+          <div className="subtitle text-center py-3">
             {this.state.type === "Continue" ? "" : this.state.question.titleEN}
           </div>
           <div className="vSpacer" />
           <div>{questionBool}</div>
           <div className="vSpacer" />
-          <button className="button blue" onClick={this.handleBack}>
+          <button
+            className="btn btn-primary float-left mt-3"
+            onClick={this.handleBack}
+          >
             Back
           </button>
           <button
-            className={`button blue right ${this.store === [] ? "empty" : ""}`}
+            className={`btn btn-primary float-right mt-3 ${
+              this.store === [] ? "empty" : ""
+            }`}
             onClick={this.handleNext}
           >
             Next

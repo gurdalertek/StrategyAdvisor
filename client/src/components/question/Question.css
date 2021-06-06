@@ -1,9 +1,9 @@
 :root {
   /*--q-shadow-color: rgba(0, 0, 0, 0.2);*/
-  --q-button-color-faded: #0069D9;
-  --q-button-color: #007BFF;
+  --q-button-color-faded: #0069d9;
+  --q-button-color: #007bff;
   --q-title-background-color-faded: #4d565f;
-  --q-title-background-color: #343A40;
+  --q-title-background-color: #343a40;
   --q-choice-background-color: #54585e;
   --q-choice-background-color-faded: #989ea3;
 }
@@ -14,13 +14,13 @@
 
 .questionContainer {
   background-color: white;
-  padding: 10px;
+  padding: 10px 0;
   margin: 0 auto;
-  width: 95%;
+  width: 100%;
   border-radius: 2px;
   box-shadow: 0 0 8px var(--q-shadow-color);
   /*display: inline-block;*/
-  transition: all 0.2s ease-in-out; 
+  transition: all 0.2s ease-in-out;
 }
 
 .button {
@@ -48,10 +48,10 @@
   margin: 0 auto;
   text-align: center;
   color: white;
-  width: 75%;
+  width: 100%;
   background-color: var(--q-title-background-color-faded);
   border-radius: 2px;
-  padding: 4px 4px;
+  padding: 15px 4px;
 }
 
 .questionContainer .title:hover {
@@ -65,8 +65,8 @@
 .questionContainer .choices {
   text-align: center;
   display: flex;
-  width: 500px;
-  max-width: 90%;
+  /* width: 500px; */
+  max-width: 100%;
   margin: 0 auto;
   justify-content: space-around;
   padding: 0 40px;
