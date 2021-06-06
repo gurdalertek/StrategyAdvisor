@@ -227,31 +227,48 @@ export default class Question extends Component {
     let questionBool = false;
     if (this.state.type === "Question") {
       questionBool = (
-        <div className="choices justify-content-center">
-          <span className="cstLeftCheckLabel mt-1">{this.checkLabel(1)}</span>
-          <span className="hSpacer" />
-          {this.numbers.map((number, index) => {
-            return (
-              <span
-                key={index}
-                onClick={() => this.setAnswer(number)}
-                className={`choice ${this.state.type + "C"} ${this.isMarked(
-                  number
-                )}`}
-              >
-                {number}
-              </span>
-            );
-          })}
-          <span className="hSpacer" />
-          <span className="cstRightCheckLabel mt-1">{this.checkLabel(2)}</span>
+        <div>
+          <span className="cstLeftCheckLabelMobile mt-1 mb-3 text-left">
+            {this.checkLabel(1)}
+          </span>
+
+          <div className="choices justify-content-center">
+            <span className="cstLeftCheckLabelDesktop alert alert-dark my-0">
+              {this.checkLabel(1)}
+            </span>
+
+            <span className="hSpacer"></span>
+            {this.numbers.map((number, index) => {
+              return (
+                <span
+                  key={index}
+                  onClick={() => this.setAnswer(number)}
+                  className={`choice mt-2 ${
+                    this.state.type + "C"
+                  } ${this.isMarked(number)}`}
+                >
+                  {number}
+                </span>
+              );
+            })}
+
+            <span className="hSpacer"></span>
+
+            <span className="cstRightCheckLabelDesktop alert alert-dark my-0">
+              {this.checkLabel(2)}
+            </span>
+          </div>
+
+          <span className="cstRightCheckLabelMobile mt-3 mb-2 text-right">
+            {this.checkLabel(2)}
+          </span>
         </div>
       );
     } else {
       questionBool = <div></div>;
     }
     const defaultRender = (
-      <div className="questionContainer">
+      <div className="questionContainer mb-4">
         <div className="buttonHolder">
           {/* <div className={`title`}>{this.moduleStart.textEN}</div> */}
           <div className="title">{this.moduleStart.textEN}</div>
@@ -259,15 +276,16 @@ export default class Question extends Component {
           <div className="alert alert-primary text-center py-3">
             {this.state.type === "Continue" ? "" : this.state.question.titleEN}
           </div>
-          <div className="vSpacer" />
+          <div className="vSpacer"></div>
           <div>{questionBool}</div>
-          <div className="vSpacer" />
+          <div className="vSpacer"></div>
           <button
             className="btn btn-primary float-left mt-3"
             onClick={this.handleBack}
           >
             Back
           </button>
+
           <button
             className={`btn btn-primary float-right mt-3 ${
               this.store === [] ? "empty" : ""

@@ -59,7 +59,7 @@
 }
 
 .vSpacer {
-  margin-top: 24px;
+  margin-top: 30px;
 }
 
 .questionContainer .choices {
@@ -75,18 +75,20 @@
 .questionContainer .choice {
   padding: 4px 10px;
   margin: 0 2px;
-  border-radius: 50%;
+  border-radius: 0;
   width: 35px;
-  color: white;
-  background-color: var(--q-choice-background-color-faded);
+  color: #007bff;
+  background-color: #ffffff;
+  border: 1px solid #dee2e6;
   height: 35px;
-  font-size: 13px;
+  font-size: 12px;
   line-height: 2;
 }
 
 .questionContainer .choice:hover {
   cursor: pointer;
-  background-color: var(--q-choice-background-color);
+  background-color: #007bff;
+  color: #ffffff;
 }
 
 .animate {
@@ -98,5 +100,6 @@
 }
 
 .questionContainer .marked {
-  background-color: var(--q-choice-background-color);
+  color: #ffffff;
+  background-color: #007bff;
 }
