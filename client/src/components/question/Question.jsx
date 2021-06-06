@@ -68,6 +68,7 @@ export default class Question extends Component {
     let nextQuestionId;
     if (this.state.type === "Question") {
       this.moduleStart.textEN = "";
+
       if (this.state.answer === -1) return;
       nextQuestionId =
         this.state.question.answers["answer" + genuineAnswer].nextQuestion;
@@ -267,12 +268,12 @@ export default class Question extends Component {
     } else {
       questionBool = <div></div>;
     }
+
     const defaultRender = (
       <div className="questionContainer mb-4">
         <div className="buttonHolder">
-          {/* <div className={`title`}>{this.moduleStart.textEN}</div> */}
           <div className="title">{this.moduleStart.textEN}</div>
-          <div className="vSpacer" />
+          <div className="vSpacer"></div>
           <div className="alert alert-primary text-center py-3">
             {this.state.type === "Continue" ? "" : this.state.question.titleEN}
           </div>

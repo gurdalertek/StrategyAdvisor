@@ -76,12 +76,13 @@
   padding: 4px 10px;
   margin: 0 2px;
   border-radius: 0;
-  width: 35px;
+  width: 36px;
   color: #007bff;
   background-color: #ffffff;
   border: 1px solid #dee2e6;
-  height: 35px;
+  height: 36px;
   font-size: 12px;
+  font-weight: bold;
   line-height: 2;
 }
 
