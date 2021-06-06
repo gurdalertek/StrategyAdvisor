@@ -88,7 +88,7 @@ class AppNavbar extends Component {
                 <Nav className="nav nav-pills nav-justified pl-4" navbar>
                   <Link
                     to="/Modules"
-                    className="nav-link btn btn-sm btn-primary text-white "
+                    className="nav-link btn btn-sm btn-primary text-white"
                   >
                     Modules
                   </Link>

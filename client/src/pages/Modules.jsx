@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-import { Button } from "react-bootstrap";
+// import { Button } from "react-bootstrap";
 // import { BrowserRouter as Router, Switch, Route, Link } from "react-router-dom";
 import { Link } from "react-router-dom";
 
@@ -33,10 +33,12 @@ class Modules extends Component {
                         moduleId: 1,
                         moduleTitle: "Channel",
                       }}
+                      className="nav-link btn btn-primary text-white"
                     >
-                      <Button variant="primary" href="/ModulePage">
+                      Go to Module
+                      {/* <Button variant="primary" href="/ModulePage">
                         Go to Module
-                      </Button>
+                      </Button> */}
                     </Link>
                   </div>
                 </div>
@@ -52,8 +54,10 @@ class Modules extends Component {
                         moduleId: 2,
                         moduleTitle: "Customer",
                       }}
+                      className="nav-link btn btn-primary text-white"
                     >
-                      <Button variant="primary">Go to Module</Button>
+                      Go to Module
+                      {/* <Button variant="primary">Go to Module</Button> */}
                     </Link>
                   </div>
                 </div>
@@ -69,8 +73,10 @@ class Modules extends Component {
                         moduleId: 3,
                         moduleTitle: "Value Chain",
                       }}
+                      className="nav-link btn btn-primary text-white"
                     >
-                      <Button variant="primary">Go to Module</Button>
+                      Go to Module
+                      {/* <Button variant="primary">Go to Module</Button> */}
                     </Link>
                   </div>
                 </div>
@@ -86,8 +92,10 @@ class Modules extends Component {
                         moduleId: 4,
                         moduleTitle: "Knowledge",
                       }}
+                      className="nav-link btn btn-primary text-white"
                     >
-                      <Button variant="primary">Go to Module</Button>
+                      Go to Module
+                      {/* <Button variant="primary">Go to Module</Button> */}
                     </Link>
                   </div>
                 </div>
@@ -103,8 +111,10 @@ class Modules extends Component {
                         moduleId: 5,
                         moduleTitle: "Mega",
                       }}
+                      className="nav-link btn btn-primary text-white"
                     >
-                      <Button variant="primary">Go to Module</Button>
+                      Go to Module
+                      {/* <Button variant="primary">Go to Module</Button> */}
                     </Link>
                   </div>
                 </div>
@@ -124,8 +134,10 @@ class Modules extends Component {
                         moduleId: 6,
                         moduleTitle: "Organization",
                       }}
+                      className="nav-link btn btn-primary text-white"
                     >
-                      <Button variant="primary">Go to Module</Button>
+                      Go to Module
+                      {/* <Button variant="primary">Go to Module</Button> */}
                     </Link>
                   </div>
                 </div>
@@ -141,8 +153,10 @@ class Modules extends Component {
                         moduleId: 7,
                         moduleTitle: "Product",
                       }}
+                      className="nav-link btn btn-primary text-white"
                     >
-                      <Button variant="primary">Go to Module</Button>
+                      Go to Module
+                      {/* <Button variant="primary">Go to Module</Button> */}
                     </Link>
                   </div>
                 </div>
