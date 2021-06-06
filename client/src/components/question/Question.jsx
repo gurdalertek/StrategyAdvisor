@@ -257,7 +257,7 @@ export default class Question extends Component {
           {/* <div className={`title`}>{this.moduleStart.textEN}</div> */}
           <div className="title">{this.moduleStart.textEN}</div>
           <div className="vSpacer" />
-          <div className="subtitle text-center py-3">
+          <div className="title text-center py-3">
             {this.state.type === "Continue" ? "" : this.state.question.titleEN}
           </div>
           <div className="vSpacer" />
@@ -287,13 +287,14 @@ export default class Question extends Component {
     console.log(mapSort1);
     if (this.state.isSurveyFinished) {
       renderedView = (
-        <div>
-          <div>Suggestions</div>
+        <div className="cstSuggestions">
+          <h3 className="pb-3">Suggestions</h3>
+
           <ul>
             {[...this.percentageMap.keys()].map((suggestionID) => {
               if (suggestionID !== "undefined") {
                 return (
-                  <li>
+                  <li className="pb-3">
                     {Math.round(this.percentageMap.get(suggestionID))}%,{" "}
                     {suggestionID}
                   </li>
@@ -303,9 +304,11 @@ export default class Question extends Component {
               }
             })}
           </ul>
-          <Link to="/Modules">
-            <Button variant="primary">Go Back to Modules Page</Button>
-          </Link>
+          <div className="text-center py-3">
+            <Link to="/Modules">
+              <Button variant="primary">Go Back to Modules Page</Button>
+            </Link>
+          </div>
         </div>
       );
     } else renderedView = defaultRender;
