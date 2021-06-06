@@ -1,9 +1,9 @@
 import React, { Component } from "react";
 import "./Question.css";
 import axios from "axios";
-import { Button } from "react-bootstrap";
+// import { Button } from "react-bootstrap";
 // import { BrowserRouter as Router, Switch, Route, Link } from "react-router-dom";
-import { BrowserRouter as Link } from "react-router-dom";
+import { Link } from "react-router-dom";
 
 export default class Question extends Component {
   constructor(props) {
@@ -188,13 +188,12 @@ export default class Question extends Component {
             "answer" + (3 - this.findGenuineAnswer(this.state.answer))
           ].RelatedToSuggestion.relatedSuggestionID
         );
-        this.suggestions
-          .get(
-            this.state.question.answers[
-              "answer" + (3 - this.findGenuineAnswer(this.state.answer))
-            ].RelatedToSuggestion.relatedSuggestionID
-          )
-          .pop();
+        this.suggestions.get(
+          this.state.question.answers[
+            "answer" + (3 - this.findGenuineAnswer(this.state.answer))
+          ].RelatedToSuggestion.relatedSuggestionID
+        );
+        // .pop();
       }
     console.log(this.suggestions);
     this.setState(this.store.pop());
@@ -229,7 +228,7 @@ export default class Question extends Component {
     if (this.state.type === "Question") {
       questionBool = (
         <div className="choices justify-content-center">
-          <span>{this.checkLabel(1)}</span>
+          <span className="cstLeftCheckLabel mt-1">{this.checkLabel(1)}</span>
           <span className="hSpacer" />
           {this.numbers.map((number, index) => {
             return (
@@ -245,7 +244,7 @@ export default class Question extends Component {
             );
           })}
           <span className="hSpacer" />
-          <span>{this.checkLabel(2)}</span>
+          <span className="cstRightCheckLabel mt-1">{this.checkLabel(2)}</span>
         </div>
       );
     } else {
@@ -257,7 +256,7 @@ export default class Question extends Component {
           {/* <div className={`title`}>{this.moduleStart.textEN}</div> */}
           <div className="title">{this.moduleStart.textEN}</div>
           <div className="vSpacer" />
-          <div className="title text-center py-3">
+          <div className="alert alert-primary text-center py-3">
             {this.state.type === "Continue" ? "" : this.state.question.titleEN}
           </div>
           <div className="vSpacer" />
@@ -289,12 +288,11 @@ export default class Question extends Component {
       renderedView = (
         <div className="cstSuggestions">
           <h3 className="pb-3">Suggestions</h3>
-
           <ul>
             {[...this.percentageMap.keys()].map((suggestionID) => {
               if (suggestionID !== "undefined") {
                 return (
-                  <li className="pb-3">
+                  <li className="pb-3" key={suggestionID}>
                     {Math.round(this.percentageMap.get(suggestionID))}%,{" "}
                     {suggestionID}
                   </li>
@@ -305,8 +303,11 @@ export default class Question extends Component {
             })}
           </ul>
           <div className="text-center py-3">
-            <Link to="/Modules">
-              <Button variant="primary">Go Back to Modules Page</Button>
+            <Link
+              to="/Modules"
+              className="btn btn-primary text-white cstNavItem"
+            >
+              Go Back to Modules Page
             </Link>
           </div>
         </div>
