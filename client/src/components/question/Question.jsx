@@ -306,7 +306,7 @@ export default class Question extends Component {
     if (this.state.isSurveyFinished) {
       renderedView = (
         <div className="cstSuggestions">
-          <h3 className="pb-3">Suggestions</h3>
+          <h3 className="py-3">Suggestions</h3>
           <ul>
             {[...this.percentageMap.keys()].map((suggestionID) => {
               if (suggestionID !== "undefined") {
