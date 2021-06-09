@@ -12,6 +12,16 @@
   display: none;
 }
 
+.cstReactPageLoader .MuiCircularProgress-colorPrimary {
+  color: #007bff;
+  position: absolute;
+  display: block;
+  margin: auto;
+  left: 0;
+  right: 0;
+  top: 20%;
+}
+
 @media (max-width: 768.98px) {
   .cstHeaderTitle {
     text-align: center;

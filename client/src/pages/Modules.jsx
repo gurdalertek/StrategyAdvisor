@@ -2,6 +2,7 @@ import React, { Component } from "react";
 // import { Button } from "react-bootstrap";
 // import { BrowserRouter as Router, Switch, Route, Link } from "react-router-dom";
 import { Link } from "react-router-dom";
+import Loader from "../components/Loader";
 
 import ChannelImage from "../pics/module_images_700x400/Channel.jpg";
 import CustomerImage from "../pics/module_images_700x400/Customer.jpg";
@@ -14,7 +15,7 @@ import ValueChainImage from "../pics/module_images_700x400/ValueChain.jpg";
 class Modules extends Component {
   render() {
     return (
-      <div>
+      <Loader>
         <div className="container">
           <h2 className="flex text-uppercase text-center display-4 pb-2">
             Modules
@@ -43,6 +44,7 @@ class Modules extends Component {
                   </div>
                 </div>
               </div>
+
               <div className="col-lg-4 col-sm-6 mb-4">
                 <div className="card h-100 text-center">
                   <img className="card-img-top" src={CustomerImage} alt="" />
@@ -62,6 +64,7 @@ class Modules extends Component {
                   </div>
                 </div>
               </div>
+
               <div className="col-lg-4 col-sm-6 mb-4">
                 <div className="card h-100 text-center">
                   <img className="card-img-top" src={ValueChainImage} alt="" />
@@ -83,6 +86,7 @@ class Modules extends Component {
                   </div>
                 </div>
               </div>
+
               <div className="col-lg-4 col-sm-6 mb-4">
                 <div className="card h-100 text-center">
                   <img className="card-img-top" src={KnowledgeImage} alt="" />
@@ -104,6 +108,7 @@ class Modules extends Component {
                   </div>
                 </div>
               </div>
+
               <div className="col-lg-4 col-sm-6 mb-4">
                 <div className="card h-100 text-center">
                   <img className="card-img-top" src={MegaImage} alt="" />
@@ -123,6 +128,7 @@ class Modules extends Component {
                   </div>
                 </div>
               </div>
+
               <div className="col-lg-4 col-sm-6 mb-4">
                 <div className="card h-100 text-center">
                   <img
@@ -148,6 +154,7 @@ class Modules extends Component {
                   </div>
                 </div>
               </div>
+
               <div className="col-lg-4 col-sm-6 mb-4">
                 <div className="card h-100 text-center">
                   <img className="card-img-top" src={ProductImage} alt="" />
@@ -170,7 +177,7 @@ class Modules extends Component {
             </div>
           </div>
         </div>
-      </div>
+      </Loader>
     );
   }
 }
