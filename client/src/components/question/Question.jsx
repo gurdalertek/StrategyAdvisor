@@ -270,25 +270,29 @@ export default class Question extends Component {
     }
 
     const defaultRender = (
-      <div className="questionContainer mb-4">
+      <div className="questionContainer">
         <div className="buttonHolder">
-          <div className="title">{this.moduleStart.textEN}</div>
-          <div className="vSpacer"></div>
-          <div className="alert alert-primary text-center py-3">
+          <div className="title">
+            {this.moduleStart.textEN}
+            <div></div>
             {this.state.type === "Continue" ? "" : this.state.question.titleEN}
           </div>
+          <div className="vSpacer"></div>
+          {/* <div className="alert alert-primary text-center py-3">
+            {this.state.type === "Continue" ? "" : this.state.question.titleEN}
+          </div> */}
           <div className="vSpacer"></div>
           <div>{questionBool}</div>
           <div className="vSpacer"></div>
           <button
-            className="btn btn-primary float-left mt-3"
+            className="btn btn-primary float-left"
             onClick={this.handleBack}
           >
             Back
           </button>
 
           <button
-            className={`btn btn-primary float-right mt-3 ${
+            className={`btn btn-primary float-right ${
               this.store === [] ? "empty" : ""
             }`}
             onClick={this.handleNext}
