@@ -31,12 +31,9 @@ export default class Question extends Component {
   }
 
   componentDidMount() {
-    const clientURL = process.env.REACT_APP_CLIENT_URL;
+    const clientURL = process.env.REACT_APP_SERVER_URL;
     axios
       .get(`${clientURL}/api/getModule`, {
-        headers: {
-          "Access-Control-Allow-Origin": "*",
-        },
         params: { moduleId: this.props.moduleId },
       })
       .then((res) => {
