@@ -31,7 +31,7 @@ export default class Question extends Component {
   }
 
   componentDidMount() {
-    const clientURL = process.env.REACT_APP_SERVER_URL;
+    const clientURL = process.env.REACT_APP_CLIENT_URL;
     axios
       .get(`${clientURL}/api/getModule`, {
         params: { moduleId: this.props.moduleId },
