@@ -33,7 +33,7 @@ class ModulePage extends Component {
           <div className="row">
             <div className="col-lg-3 col-md-12 col-sm-12 col-xs-12 card card-block justify-content-center cstQuestionImgCard">
               <img
-                src={`${process.env.PUBLIC_URL}/pics/${this.state.modulePhotoURL}.jpg`}
+                src={`${process.env.REACT_APP_CLIENT_URL}/pics/${this.state.modulePhotoURL}.jpg`}
                 className="img-fluid img-thumbnail cstQuestionImg"
                 alt="Question"
               />
