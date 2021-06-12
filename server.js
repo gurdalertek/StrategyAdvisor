@@ -10,7 +10,7 @@ helmet = require("helmet");
 
 const options = {
   key: fs.readFileSync(
-    "/home/ertekpro/ssl/keys/c5e7b_d4631_5751ebb8be276172ed0684501dfee31c.key"
+    "/home/ertekpro/ssl/keys/9c6ed_ee921_b57a998fefe05493c65ed788ebd56a8c.key"
   ),
   cert: fs.readFileSync(
     "/home/ertekpro/ssl/certs/strategyadvisor_ertekprojects_com_9c6ed_ee921_1631318399_8ec12aae793654ad4319e84457c26147.crt"
