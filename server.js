@@ -4,13 +4,27 @@ const express = require("express");
 // const mongoose = require("mongoose");
 const path = require("path");
 var cors = require("cors");
+var https = require("https");
+const fs = require("fs");
+helmet = require("helmet");
+
+const options = {
+  key: fs.readFileSync(
+    "/home/ertekpro/ssl/keys/c5e7b_d4631_5751ebb8be276172ed0684501dfee31c.key"
+  ),
+  cert: fs.readFileSync(
+    "/home/ertekpro/ssl/certs/strategyadvisor_ertekprojects_com_9c6ed_ee921_1631318399_8ec12aae793654ad4319e84457c26147.crt"
+  ),
+};
+
 const app = express();
 const { configureDatabase } = require("./middleware/db");
 
 const { consumeData } = require("./libs/Utils");
 
 // Body-parser Middleware
-app.use(compression(express.json()));
+// app.use(compression(express.json()));
+app.use(compression(helmet()));
 app.use(cors());
 
 // DB Config
@@ -72,3 +86,5 @@ const port = process.env.PROD_SERVER_PORT || 44444;
 // const port = process.env.DEV_SERVER_PORT || 44444;
 
 app.listen(port, () => console.log(`Server started on port ${port}`));
+
+https.createServer(options, app).listen(process.env.PROD_SERVER_PORT);
