@@ -34,9 +34,28 @@ let options = {
   key: key, // fs.readFileSync('./ssl/example.key');
 };
 
+// CORS
+const whitelist = [
+  `${process.env.REACT_APP_CLIENT_URL}`,
+  `${process.env.REACT_APP_SERVER_URL}`,
+  // 'https://strategyadvisor.ertekprojects.com'
+];
+
+app.use(
+  cors({
+    origin: (origin, callback) => {
+      if (whitelist.indexOf(origin) !== -1 || !origin || "*") {
+        callback(null, true);
+      } else {
+        callback(new Error("Not allowed by CORS"));
+      }
+    },
+    credentials: true, // enable set cookie
+  })
+);
+
 // Body-parser Middleware
 app.use(compression(express.json()));
-app.use(cors());
 
 // DB Config
 // Connect to MongoDB
