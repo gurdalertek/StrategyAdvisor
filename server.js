@@ -85,7 +85,7 @@ app.get("/api/getModule", async (req, res) => {
           },
           app
         )
-        .listen(`${process.env.DEV_SERVER_PORT}`);
+        .listen(`${process.env.DEV_SERVER_PORT}` || 44444);
       const io = require("./helpers/socket").init(server);
     } else {
       const server = https
@@ -100,7 +100,7 @@ app.get("/api/getModule", async (req, res) => {
           },
           app
         )
-        .listen(`${process.env.PROD_SERVER_PORT}`);
+        .listen(`${process.env.PROD_SERVER_PORT}` || 44444);
       const io = require("./helpers/socket").init(server);
     }
   });
