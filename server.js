@@ -14,7 +14,7 @@ const fs = require("fs");
 
 // Body-parser Middleware
 app.use(compression(express.json()));
-// require("dotenv").config({ path: __dirname + "/.env" });
+require("dotenv").config();
 app.use(cors());
 
 // const whitelist = [
