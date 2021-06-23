@@ -73,7 +73,8 @@ app.get("/api/getModule", async (req, res) => {
         res.sendFile(path.resolve(__dirname, "client", "build", "index.html"));
       });
 
-      const server = https
+      // const server = https
+      https
         .createServer(
           {
             key: fs.readFileSync(
@@ -86,9 +87,10 @@ app.get("/api/getModule", async (req, res) => {
           app
         )
         .listen(`${process.env.DEV_SERVER_PORT}` || 44444);
-      const io = require("./helpers/socket").init(server);
+      // const io = require("./helpers/socket").init(server);
     } else {
-      const server = https
+      // const server = https
+      https
         .createServer(
           {
             key: fs.readFileSync(
@@ -101,7 +103,7 @@ app.get("/api/getModule", async (req, res) => {
           app
         )
         .listen(`${process.env.PROD_SERVER_PORT}` || 44444);
-      const io = require("./helpers/socket").init(server);
+      // const io = require("./helpers/socket").init(server);
     }
   });
 });
