@@ -34,29 +34,24 @@ let options = {
   key: key, // fs.readFileSync('./ssl/example.key');
 };
 
-// CORS
-const whitelist = [
-  `${process.env.REACT_APP_CLIENT_URL}`,
-  `${process.env.REACT_APP_SERVER_URL}`,
-  "https://strategyadvisor.ertekprojects.com",
-  "https://strategyadvisor.ertekprojects.com:44444",
-];
-
-app.use(
-  cors({
-    origin: (origin, callback) => {
-      if (whitelist.indexOf(origin) !== -1 || !origin || "*") {
-        callback(null, true);
-      } else {
-        callback(new Error("Not allowed by CORS"));
-      }
-    },
-    credentials: true, // enable set cookie
-  })
-);
-
 // Body-parser Middleware
 app.use(compression(express.json()));
+// app.use(coirs());
+
+var allowlist = [
+  `${process.env.REACT_APP_CLIENT_URL}`,
+  `${process.env.REACT_APP_SERVER_URL}`,
+];
+
+var corsOptionsDelegate = function (req, callback) {
+  var corsOptions;
+  if (allowlist.indexOf(req.header("Origin")) !== -1) {
+    corsOptions = { origin: true }; // reflect (enable) the requested origin in the CORS response
+  } else {
+    corsOptions = { origin: false }; // disable CORS for this request
+  }
+  callback(null, corsOptions); // callback expects two parameters: error and options
+};
 
 // DB Config
 // Connect to MongoDB
@@ -83,16 +78,7 @@ mongoose.connect(myURI, {
 }).catch(err => console.log(`Error: ${err}`))
 */
 
-app.use(function (req, res, next) {
-  res.header("Access-Control-Allow-Origin", "*");
-  res.header(
-    "Access-Control-Allow-Headers",
-    "Origin, X-Requested-With, Content-Type, Accept"
-  );
-  next();
-});
-
-app.get("/api/getModule", async (req, res) => {
+app.get("/api/getModule", cors(corsOptionsDelegate), async (req, res) => {
   console.log(req.query.moduleId);
   var result = arrayModule.filter((obj) => {
     return obj.moduleNo == req.query.moduleId;
