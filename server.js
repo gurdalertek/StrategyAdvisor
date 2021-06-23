@@ -93,15 +93,14 @@ if (process.env.NODE_ENV == "production") {
 }
 
 // Port
+const port = process.env.PROD_SERVER_PORT || 44444;
+// const port = process.env.DEV_SERVER_PORT || 44444;
 
 https
   .createServer(options, function (req, res) {
     res.writeHead(200);
     res.end("hello world\n");
   })
-  .listen(port);
+  .listen(port, () => console.log(`Server started on port ${port}`));
 
-const port = process.env.PROD_SERVER_PORT || 44444;
-// const port = process.env.DEV_SERVER_PORT || 44444;
-
-app.listen(port, () => console.log(`Server started on port ${port}`));
+// app.listen(port, () => console.log(`Server started on port ${port}`));
