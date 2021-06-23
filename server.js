@@ -14,17 +14,17 @@ const fs = require("fs");
 
 const cert = [
   fs.readFileSync(
-    "~/ssl/certs/strategyadvisor_ertekprojects_com_cd7bf_2f81d_1632268799_f5a29b0a1ed3c344afa0655a2331dc1d.crt"
+    "/home/ertekpro/ssl/certs/strategyadvisor_ertekprojects_com_cd7bf_2f81d_1632268799_f5a29b0a1ed3c344afa0655a2331dc1d.crt"
   ),
 ];
 // const ca = [
 //   fs.readFileSync(
-//     "./ssl/strategyadvisor_ertekprojects_com_cd7bf_2f81d_1632268799_f5a29b0a1ed3c344afa0655a2331dc1d.crt"
+//     "/home/ertekpro/ssl/strategyadvisor_ertekprojects_com_cd7bf_2f81d_1632268799_f5a29b0a1ed3c344afa0655a2331dc1d.crt"
 //   ),
 // ];
 const key = [
   fs.readFileSync(
-    "~/ssl/keys/cd7bf_2f81d_44b2bdee3b854381bd6ad1c2e114e60e.key"
+    "/home/ertekpro/ssl/keys/cd7bf_2f81d_44b2bdee3b854381bd6ad1c2e114e60e.key"
   ),
 ];
 
