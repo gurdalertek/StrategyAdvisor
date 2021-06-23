@@ -12,31 +12,27 @@ const { consumeData } = require("./libs/Utils");
 const https = require("https");
 const fs = require("fs");
 
-const cert = [
-  fs.readFileSync(
-    "/home/ertekpro/ssl/certs/strategyadvisor_ertekprojects_com_cd7bf_2f81d_1632268799_f5a29b0a1ed3c344afa0655a2331dc1d.crt"
-  ),
-];
-// const ca = [
-//   fs.readFileSync(
-//     "/home/ertekpro/ssl/strategyadvisor_ertekprojects_com_cd7bf_2f81d_1632268799_f5a29b0a1ed3c344afa0655a2331dc1d.crt"
-//   ),
-// ];
-const key = [
-  fs.readFileSync(
-    "/home/ertekpro/ssl/keys/cd7bf_2f81d_44b2bdee3b854381bd6ad1c2e114e60e.key"
-  ),
-];
-
-let options = {
-  cert: cert, // fs.readFileSync('./ssl/example.crt');
-  // ca: ca, // fs.readFileSync('./ssl/example.ca-bundle');
-  key: key, // fs.readFileSync('./ssl/example.key');
-};
-
 // Body-parser Middleware
 app.use(compression(express.json()));
-app.use(coirs());
+require("dotenv").config({ path: __dirname + "/.env" });
+// app.use(cors());
+
+const whitelist = [
+  `${process.env.REACT_APP_SERVER_URL}`,
+  `${process.env.REACT_APP_CLIENT_URL}`,
+];
+app.use(
+  cors({
+    origin: (origin, callback) => {
+      if (whitelist.indexOf(origin) !== -1 || !origin || "*") {
+        callback(null, true);
+      } else {
+        callback(new Error("Not allowed by CORS"));
+      }
+    },
+    credentials: false, // enable set cookie
+  })
+);
 
 // DB Config
 // Connect to MongoDB
@@ -90,17 +86,40 @@ if (process.env.NODE_ENV == "production") {
   app.get("*", (req, res) => {
     res.sendFile(path.resolve(__dirname, "client", "build", "index.html"));
   });
+
+  const server = https
+    .createServer(
+      {
+        key: fs.readFileSync(
+          `/home/ertekpro/ssl/keys/cd7bf_2f81d_44b2bdee3b854381bd6ad1c2e114e60e.key`
+        ),
+        cert: fs.readFileSync(
+          `/home/ertekpro/ssl/certs/strategyadvisor_ertekprojects_com_cd7bf_2f81d_1632268799_f5a29b0a1ed3c344afa0655a2331dc1d.crt`
+        ),
+      },
+      app
+    )
+    .listen(`${process.env.DEV_SERVER_PORT}`);
+  const io = require("./helpers/socket").init(server);
+} else {
+  const server = https
+    .createServer(
+      {
+        key: fs.readFileSync(
+          `/home/ertekpro/ssl/keys/cd7bf_2f81d_44b2bdee3b854381bd6ad1c2e114e60e.key`
+        ),
+        cert: fs.readFileSync(
+          `/home/ertekpro/ssl/certs/strategyadvisor_ertekprojects_com_cd7bf_2f81d_1632268799_f5a29b0a1ed3c344afa0655a2331dc1d.crt`
+        ),
+      },
+      app
+    )
+    .listen(`${process.env.PROD_SERVER_PORT}`);
+  const io = require("./helpers/socket").init(server);
 }
 
 // Port
-const port = process.env.PROD_SERVER_PORT || 44444;
+// const port = process.env.PROD_SERVER_PORT || 44444;
 // const port = process.env.DEV_SERVER_PORT || 44444;
-
-https
-  .createServer(options, function (req, res) {
-    res.writeHead(200);
-    // res.end("hello world\n");
-  })
-  .listen(port, () => console.log(`Server started on port ${port}`));
 
 // app.listen(port, () => console.log(`Server started on port ${port}`));
