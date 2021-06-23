@@ -113,11 +113,6 @@ app.get("/api/getModule", async (req, res) => {
 // app.use("/api/auth", require("./routes/api/auth"));
 app.use("/api/records", require("./routes/api/records"));
 app.use("/api/getModule", require("./routes/api/getmodel"));
-/*
-app.get('/', (req, res) => {
-  res.send('Hello World!')
-})
-*/
 
 // Serve static assets if in production
 if (process.env.NODE_ENV == "production") {
