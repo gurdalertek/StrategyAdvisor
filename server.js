@@ -14,25 +14,25 @@ const fs = require("fs");
 
 // Body-parser Middleware
 app.use(compression(express.json()));
-require("dotenv").config({ path: __dirname + "/.env" });
-// app.use(cors());
+// require("dotenv").config({ path: __dirname + "/.env" });
+app.use(cors());
 
-const whitelist = [
-  `${process.env.REACT_APP_SERVER_URL}`,
-  `${process.env.REACT_APP_CLIENT_URL}`,
-];
-app.use(
-  cors({
-    origin: (origin, callback) => {
-      if (whitelist.indexOf(origin) !== -1 || !origin || "*") {
-        callback(null, true);
-      } else {
-        callback(new Error("Not allowed by CORS"));
-      }
-    },
-    credentials: false, // enable set cookie
-  })
-);
+// const whitelist = [
+//   `${process.env.REACT_APP_SERVER_URL}`,
+//   `${process.env.REACT_APP_CLIENT_URL}`,
+// ];
+// app.use(
+//   cors({
+//     origin: (origin, callback) => {
+//       if (whitelist.indexOf(origin) !== -1 || !origin || "*") {
+//         callback(null, true);
+//       } else {
+//         callback(new Error("Not allowed by CORS"));
+//       }
+//     },
+//     credentials: false, // enable set cookie
+//   })
+// );
 
 // DB Config
 // Connect to MongoDB
