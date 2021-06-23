@@ -36,22 +36,7 @@ let options = {
 
 // Body-parser Middleware
 app.use(compression(express.json()));
-// app.use(coirs());
-
-var allowlist = [
-  `${process.env.REACT_APP_CLIENT_URL}`,
-  `${process.env.REACT_APP_SERVER_URL}`,
-];
-
-var corsOptionsDelegate = function (req, callback) {
-  var corsOptions;
-  if (allowlist.indexOf(req.header("Origin")) !== -1) {
-    corsOptions = { origin: true }; // reflect (enable) the requested origin in the CORS response
-  } else {
-    corsOptions = { origin: false }; // disable CORS for this request
-  }
-  callback(null, corsOptions); // callback expects two parameters: error and options
-};
+app.use(coirs());
 
 // DB Config
 // Connect to MongoDB
@@ -78,7 +63,7 @@ mongoose.connect(myURI, {
 }).catch(err => console.log(`Error: ${err}`))
 */
 
-app.get("/api/getModule", cors(corsOptionsDelegate), async (req, res) => {
+app.get("/api/getModule", async (req, res) => {
   console.log(req.query.moduleId);
   var result = arrayModule.filter((obj) => {
     return obj.moduleNo == req.query.moduleId;
@@ -114,7 +99,7 @@ const port = process.env.PROD_SERVER_PORT || 44444;
 https
   .createServer(options, function (req, res) {
     res.writeHead(200);
-    res.end("hello world\n");
+    // res.end("hello world\n");
   })
   .listen(port, () => console.log(`Server started on port ${port}`));
 
