@@ -9,6 +9,29 @@ const { configureDatabase } = require("./middleware/db");
 
 const { consumeData } = require("./libs/Utils");
 
+const https = require("https");
+const fs = require("fs");
+
+const cert = [
+  fs.readFileSync(
+    "./ssl/strategyadvisor_ertekprojects_com_cd7bf_2f81d_1632268799_f5a29b0a1ed3c344afa0655a2331dc1d.crt"
+  ),
+];
+// const ca = [
+//   fs.readFileSync(
+//     "./ssl/strategyadvisor_ertekprojects_com_cd7bf_2f81d_1632268799_f5a29b0a1ed3c344afa0655a2331dc1d.crt"
+//   ),
+// ];
+const key = [
+  fs.readFileSync("./ssl/cd7bf_2f81d_44b2bdee3b854381bd6ad1c2e114e60e.key"),
+];
+
+let options = {
+  cert: cert, // fs.readFileSync('./ssl/example.crt');
+  // ca: ca, // fs.readFileSync('./ssl/example.ca-bundle');
+  key: key, // fs.readFileSync('./ssl/example.key');
+};
+
 // Body-parser Middleware
 app.use(compression(express.json()));
 app.use(cors());
@@ -68,6 +91,14 @@ if (process.env.NODE_ENV == "production") {
 }
 
 // Port
+
+https
+  .createServer(options, function (req, res) {
+    res.writeHead(200);
+    res.end("hello world\n");
+  })
+  .listen(port);
+
 const port = process.env.PROD_SERVER_PORT || 44444;
 // const port = process.env.DEV_SERVER_PORT || 44444;
 
