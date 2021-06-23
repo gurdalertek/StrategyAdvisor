@@ -9,8 +9,8 @@ const { configureDatabase } = require("./middleware/db");
 
 const { consumeData } = require("./libs/Utils");
 
-const https = require("https");
-const fs = require("fs");
+// const https = require("https");
+// const fs = require("fs");
 
 // Body-parser Middleware
 app.use(compression(express.json()));
@@ -65,45 +65,47 @@ app.get("/api/getModule", async (req, res) => {
     return obj.moduleNo == req.query.moduleId;
   });
 
-  res.then((result) => {
-    if (process.env.NODE_ENV == "production") {
-      app.use(express.static("client/build"));
+  res.send(result);
 
-      app.get("*", (req, res) => {
-        res.sendFile(path.resolve(__dirname, "client", "build", "index.html"));
-      });
+  // res.then((result) => {
+  //   if (process.env.NODE_ENV == "production") {
+  //     app.use(express.static("client/build"));
 
-      const server = https
-        .createServer(
-          {
-            key: fs.readFileSync(
-              `/home/ertekpro/ssl/keys/cd7bf_2f81d_44b2bdee3b854381bd6ad1c2e114e60e.key`
-            ),
-            cert: fs.readFileSync(
-              `/home/ertekpro/ssl/certs/strategyadvisor_ertekprojects_com_cd7bf_2f81d_1632268799_f5a29b0a1ed3c344afa0655a2331dc1d.crt`
-            ),
-          },
-          app
-        )
-        .listen(`${process.env.DEV_SERVER_PORT}` || 44444);
-      const io = require("./helpers/socket").init(server);
-    } else {
-      const server = https
-        .createServer(
-          {
-            key: fs.readFileSync(
-              `/home/ertekpro/ssl/keys/cd7bf_2f81d_44b2bdee3b854381bd6ad1c2e114e60e.key`
-            ),
-            cert: fs.readFileSync(
-              `/home/ertekpro/ssl/certs/strategyadvisor_ertekprojects_com_cd7bf_2f81d_1632268799_f5a29b0a1ed3c344afa0655a2331dc1d.crt`
-            ),
-          },
-          app
-        )
-        .listen(`${process.env.PROD_SERVER_PORT}` || 44444);
-      const io = require("./helpers/socket").init(server);
-    }
-  });
+  //     app.get("*", (req, res) => {
+  //       res.sendFile(path.resolve(__dirname, "client", "build", "index.html"));
+  //     });
+
+  //     const server = https
+  //       .createServer(
+  //         {
+  //           key: fs.readFileSync(
+  //             `/home/ertekpro/ssl/keys/cd7bf_2f81d_44b2bdee3b854381bd6ad1c2e114e60e.key`
+  //           ),
+  //           cert: fs.readFileSync(
+  //             `/home/ertekpro/ssl/certs/strategyadvisor_ertekprojects_com_cd7bf_2f81d_1632268799_f5a29b0a1ed3c344afa0655a2331dc1d.crt`
+  //           ),
+  //         },
+  //         app
+  //       )
+  //       .listen(`${process.env.DEV_SERVER_PORT}` || 44444);
+  //     const io = require("./helpers/socket").init(server);
+  //   } else {
+  //     const server = https
+  //       .createServer(
+  //         {
+  //           key: fs.readFileSync(
+  //             `/home/ertekpro/ssl/keys/cd7bf_2f81d_44b2bdee3b854381bd6ad1c2e114e60e.key`
+  //           ),
+  //           cert: fs.readFileSync(
+  //             `/home/ertekpro/ssl/certs/strategyadvisor_ertekprojects_com_cd7bf_2f81d_1632268799_f5a29b0a1ed3c344afa0655a2331dc1d.crt`
+  //           ),
+  //         },
+  //         app
+  //       )
+  //       .listen(`${process.env.PROD_SERVER_PORT}` || 44444);
+  //     const io = require("./helpers/socket").init(server);
+  //   }
+  // });
 });
 
 // Use Routes
@@ -118,16 +120,16 @@ app.get('/', (req, res) => {
 */
 
 // Serve static assets if in production
-// if (process.env.NODE_ENV == "production") {
-//   app.use(express.static("client/build"));
+if (process.env.NODE_ENV == "production") {
+  app.use(express.static("client/build"));
 
-//   app.get("*", (req, res) => {
-//     res.sendFile(path.resolve(__dirname, "client", "build", "index.html"));
-//   });
-// }
+  app.get("*", (req, res) => {
+    res.sendFile(path.resolve(__dirname, "client", "build", "index.html"));
+  });
+}
 
 // Port
-// const port = process.env.PROD_SERVER_PORT || 44444;
+const port = process.env.PROD_SERVER_PORT || 44444;
 // const port = process.env.DEV_SERVER_PORT || 44444;
 
-// app.listen(port, () => console.log(`Server started on port ${port}`));
+app.listen(port, () => console.log(`Server started on port ${port}`));
