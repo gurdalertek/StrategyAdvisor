@@ -82,6 +82,11 @@ mongoose.connect(myURI, {
 }).catch(err => console.log(`Error: ${err}`))
 */
 
+app.use((req, res, next) => {
+  res.header("Access-Control-Allow-Origin", "*");
+  next();
+});
+
 app.get("/api/getModule", async (req, res) => {
   console.log(req.query.moduleId);
   var result = arrayModule.filter((obj) => {
