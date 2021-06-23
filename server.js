@@ -39,6 +39,7 @@ const whitelist = [
   `${process.env.REACT_APP_CLIENT_URL}`,
   `${process.env.REACT_APP_SERVER_URL}`,
   "https://strategyadvisor.ertekprojects.com",
+  "https://strategyadvisor.ertekprojects.com:44444",
 ];
 
 app.use(
