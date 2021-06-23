@@ -14,7 +14,7 @@ const fs = require("fs");
 
 // Body-parser Middleware
 app.use(compression(express.json()));
-require("dotenv").config({ path: __dirname + "/.env" });
+// require("dotenv").config({ path: __dirname + "/.env" });
 app.use(cors());
 
 // const whitelist = [
@@ -73,8 +73,7 @@ app.get("/api/getModule", async (req, res) => {
         res.sendFile(path.resolve(__dirname, "client", "build", "index.html"));
       });
 
-      // const server = https
-      https
+      const server = https
         .createServer(
           {
             key: fs.readFileSync(
@@ -87,10 +86,9 @@ app.get("/api/getModule", async (req, res) => {
           app
         )
         .listen(`${process.env.DEV_SERVER_PORT}` || 44444);
-      // const io = require("./helpers/socket").init(server);
+      const io = require("./helpers/socket").init(server);
     } else {
-      // const server = https
-      https
+      const server = https
         .createServer(
           {
             key: fs.readFileSync(
@@ -103,7 +101,7 @@ app.get("/api/getModule", async (req, res) => {
           app
         )
         .listen(`${process.env.PROD_SERVER_PORT}` || 44444);
-      // const io = require("./helpers/socket").init(server);
+      const io = require("./helpers/socket").init(server);
     }
   });
 });
