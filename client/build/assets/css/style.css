@@ -1,0 +1,62 @@
+/* Custom Style */
+.cstQuestionImgCard {
+  border: none !important;
+}
+
+.cstQuestionDetailsCard {
+  padding: 0 10px;
+}
+
+.cstLeftCheckLabelMobile,
+.cstRightCheckLabelMobile {
+  display: none;
+}
+
+.cstReactPageLoader .MuiCircularProgress-colorPrimary {
+  color: #007bff;
+  position: absolute;
+  display: block;
+  margin: auto;
+  left: 0;
+  right: 0;
+  top: 20%;
+}
+
+@media (max-width: 768.98px) {
+  .cstHeaderTitle {
+    text-align: center;
+    margin-bottom: 20px;
+  }
+
+  .cstQuestionImg {
+    max-width: 250px !important;
+    margin: 0 auto 20px;
+  }
+}
+
+@media (max-width: 575.98px) {
+  ul.cstNavItemUl {
+    padding: 15px 0 10px !important;
+  }
+
+  .questionContainer .choice {
+    width: auto !important;
+    height: auto !important;
+    font-size: 12px !important;
+    line-height: 1.5 !important;
+  }
+
+  .card {
+    border: none !important;
+  }
+
+  .cstLeftCheckLabelDesktop,
+  .cstRightCheckLabelDesktop {
+    display: none;
+  }
+
+  .cstLeftCheckLabelMobile,
+  .cstRightCheckLabelMobile {
+    display: block;
+  }
+}
