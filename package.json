@@ -24,7 +24,7 @@
     "express": "^4.17.1",
     "helmet": "^4.6.0",
     "jsonwebtoken": "^8.5.1",
-    "mongoose": "^5.13.10",
+    "mongoose": ">=6.4.6",
     "pm2-health": "^1.11.8"
   },
   "devDependencies": {},
