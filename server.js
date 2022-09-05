@@ -66,46 +66,6 @@ app.get('/api/getModule', async (req, res) => {
   });
 
   res.send(result);
-
-  // res.then((result) => {
-  //   if (process.env.NODE_ENV == "production") {
-  //     app.use(express.static("client/build"));
-
-  //     app.get("*", (req, res) => {
-  //       res.sendFile(path.resolve(__dirname, "client", "build", "index.html"));
-  //     });
-
-  //     const server = https
-  //       .createServer(
-  //         {
-  //           key: fs.readFileSync(
-  //             `/home/ertekpro/ssl/keys/cd7bf_2f81d_44b2bdee3b854381bd6ad1c2e114e60e.key`
-  //           ),
-  //           cert: fs.readFileSync(
-  //             `/home/ertekpro/ssl/certs/strategyadvisor_ertekprojects_com_cd7bf_2f81d_1632268799_f5a29b0a1ed3c344afa0655a2331dc1d.crt`
-  //           ),
-  //         },
-  //         app
-  //       )
-  //       .listen(`${process.env.DEV_SERVER_PORT}` || 3000);
-  //     const io = require("./helpers/socket").init(server);
-  //   } else {
-  //     const server = https
-  //       .createServer(
-  //         {
-  //           key: fs.readFileSync(
-  //             `/home/ertekpro/ssl/keys/cd7bf_2f81d_44b2bdee3b854381bd6ad1c2e114e60e.key`
-  //           ),
-  //           cert: fs.readFileSync(
-  //             `/home/ertekpro/ssl/certs/strategyadvisor_ertekprojects_com_cd7bf_2f81d_1632268799_f5a29b0a1ed3c344afa0655a2331dc1d.crt`
-  //           ),
-  //         },
-  //         app
-  //       )
-  //       .listen(`${process.env.PROD_SERVER_PORT}` || 3000);
-  //     const io = require("./helpers/socket").init(server);
-  //   }
-  // });
 });
 
 // Use Routes
