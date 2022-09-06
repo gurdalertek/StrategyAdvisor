@@ -1,7 +1,7 @@
 import React, {
   Component,
   // Fragment
-} from "react";
+} from 'react';
 
 import {
   Collapse,
@@ -11,14 +11,15 @@ import {
   Nav,
   // NavItem,
   Container,
-} from "reactstrap";
-import { connect } from "react-redux";
-import PropTypes from "prop-types";
+} from 'reactstrap';
+import { connect } from 'react-redux';
+import PropTypes from 'prop-types';
 // import RegisterModal from "./auth/RegisterModal";
 // import LoginModal from "./auth/LoginModal";
 // import Logout from "./auth/Logout";
-import { BrowserRouter as Router, Switch, Route, Link } from "react-router-dom";
-import { Modules, Records, ModulePage, Welcome } from "../pages";
+import { BrowserRouter as Router, Switch, Route, Link } from 'react-router-dom';
+import { Modules, Records, ModulePage, Welcome } from '../pages';
+import { styled } from '@material-ui/core';
 // import * as ReactBootstrap from "react-bootstrap";
 
 class AppNavbar extends Component {

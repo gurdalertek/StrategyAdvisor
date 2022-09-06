@@ -25,9 +25,9 @@
     "helmet": "^4.6.0",
     "jsonwebtoken": "^8.5.1",
     "mongoose": ">=6.4.6",
+    "nodemon": "^2.0.19",
     "pm2-health": "^1.11.8"
   },
-  "devDependencies": {},
   "engines": {
     "node": "16.x",
     "npm": "7.10.0"

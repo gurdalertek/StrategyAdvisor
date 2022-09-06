@@ -1,6 +1,6 @@
 {
   "name": "client",
-  "homepage": "https://strategyadvisor.ertekprojects.com",
+  "homepage": "http://strategyadvisor.test",
   "version": "0.1.0",
   "private": true,
   "dependencies": {
@@ -44,5 +44,5 @@
       "last 1 safari version"
     ]
   },
-  "proxy": "https://strategyadvisor.vercel.app:3000"
+  "proxy": "http://strategyadvisor.test:3000"
 }
