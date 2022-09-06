@@ -5660,7 +5660,7 @@
           "Node_ID": 600001,
           "Node_Type": "Module Start",
           "Node_Name_TR": "\"Organizasyon\" modülüne \"Teknoloji\" incelemesiyle başlıyorsunuz.",
-          "Node_Name_EN": "You are now within the \"Organization\" Module, starting with the analysis of \"Technology\".",          
+          "Node_Name_EN": "You are now within the \"Organization\" Module, starting with the analysis of \"Technology\".",
           "Module_No": 6,
           "Link_to_Next_Node": "600002"
         },
