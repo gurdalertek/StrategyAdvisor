@@ -1,32 +1,20 @@
 {
   "files": {
-    "main.css": "/static/css/main.df0f0ebc.chunk.css",
-    "main.js": "/static/js/main.7ff5d86c.chunk.js",
-    "main.js.map": "/static/js/main.7ff5d86c.chunk.js.map",
-    "runtime-main.js": "/static/js/runtime-main.81534a39.js",
-    "runtime-main.js.map": "/static/js/runtime-main.81534a39.js.map",
-    "static/css/2.bd0c6470.chunk.css": "/static/css/2.bd0c6470.chunk.css",
-    "static/js/2.96c1b847.chunk.js": "/static/js/2.96c1b847.chunk.js",
-    "static/js/2.96c1b847.chunk.js.map": "/static/js/2.96c1b847.chunk.js.map",
+    "main.css": "/static/css/main.a61d2473.css",
+    "main.js": "/static/js/main.213efb24.js",
+    "static/media/Knowledge.jpg": "/static/media/Knowledge.dd6f39316931642d1e99.jpg",
+    "static/media/Customer.jpg": "/static/media/Customer.00da90b4fd1ed41f6a7c.jpg",
+    "static/media/Channel.jpg": "/static/media/Channel.61f232a643b788c3b78c.jpg",
+    "static/media/Mega.jpg": "/static/media/Mega.5d6bb09f072bc5c5f627.jpg",
+    "static/media/Product.jpg": "/static/media/Product.6716cffbbdbc4cccd840.jpg",
+    "static/media/Organization.jpg": "/static/media/Organization.e3d37a2fa21c0f238319.jpg",
+    "static/media/ValueChain.jpg": "/static/media/ValueChain.102143bcdac1934372b0.jpg",
     "index.html": "/index.html",
-    "precache-manifest.fe5fc19f175b423e24b46d8982742a3d.js": "/precache-manifest.fe5fc19f175b423e24b46d8982742a3d.js",
-    "service-worker.js": "/service-worker.js",
-    "static/css/2.bd0c6470.chunk.css.map": "/static/css/2.bd0c6470.chunk.css.map",
-    "static/css/main.df0f0ebc.chunk.css.map": "/static/css/main.df0f0ebc.chunk.css.map",
-    "static/js/2.96c1b847.chunk.js.LICENSE.txt": "/static/js/2.96c1b847.chunk.js.LICENSE.txt",
-    "static/media/Channel.jpg": "/static/media/Channel.38dc3154.jpg",
-    "static/media/Customer.jpg": "/static/media/Customer.3df3dd77.jpg",
-    "static/media/Knowledge.jpg": "/static/media/Knowledge.a13ba6cf.jpg",
-    "static/media/Mega.jpg": "/static/media/Mega.a12aa895.jpg",
-    "static/media/Organization.jpg": "/static/media/Organization.6dbda4d3.jpg",
-    "static/media/Product.jpg": "/static/media/Product.637dfc0c.jpg",
-    "static/media/ValueChain.jpg": "/static/media/ValueChain.e923bbe4.jpg"
+    "main.a61d2473.css.map": "/static/css/main.a61d2473.css.map",
+    "main.213efb24.js.map": "/static/js/main.213efb24.js.map"
   },
   "entrypoints": [
-    "static/js/runtime-main.81534a39.js",
-    "static/css/2.bd0c6470.chunk.css",
-    "static/js/2.96c1b847.chunk.js",
-    "static/css/main.df0f0ebc.chunk.css",
-    "static/js/main.7ff5d86c.chunk.js"
+    "static/css/main.a61d2473.css",
+    "static/js/main.213efb24.js"
   ]
 }

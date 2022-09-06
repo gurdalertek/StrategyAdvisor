@@ -22,6 +22,12 @@
   top: 20%;
 }
 
+a.cstNavItem {
+  color: #fff !important;
+  background-color: #007bff !important;
+  border-color: #007bff !important;
+}
+
 @media (max-width: 768.98px) {
   .cstHeaderTitle {
     text-align: center;
