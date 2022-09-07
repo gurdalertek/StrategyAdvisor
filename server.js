@@ -76,20 +76,18 @@ app.get('/api/getModule', async (req, res) => {
 
 // Serve static assets if in production
 if (process.env.NODE_ENV == 'production') {
-  // app.use(express.static('client/build'));
+  app.use(express.static('client/build'));
 
-  // app.get('*', (req, res) => {
-  //   res.sendFile(path.resolve(__dirname, 'client', 'build', 'index.html'));
-  // });
-
-  const root = require('path').join(__dirname, 'client', 'build');
-  app.use(express.static(root));
   app.get('*', (req, res) => {
-    res.sendFile('index.html', { root });
+    res.sendFile(path.resolve(__dirname, 'client', 'build', 'index.html'));
   });
 }
 
 // Port
-const port = process.env.PROD_SERVER_PORT || 44444;
+// const port = process.env.PROD_SERVER_PORT || 3000;
 
-app.listen(port, () => console.log(`Server started on port ${port}`));
+// app.listen(port, () => console.log(`Server started on port ${port}`));
+
+// app.listen(process.env.PROD_SERVER_PORT || 3000);
+
+app.listen(process.env.PORT || 3000);
