@@ -9,7 +9,7 @@ const { configureDatabase } = require('./middleware/db');
 
 const { consumeData } = require('./libs/Utils');
 
-// const https = require("https");
+const https = require('https');
 // const fs = require("fs");
 
 // Body-parser Middleware
@@ -74,14 +74,28 @@ app.get('/api/getModule', async (req, res) => {
 // app.use('/api/records', require('./routes/api/records'));
 // app.use('/api/getModule', require('./routes/api/getmodel'));
 
-// Serve static assets if in production
-if (process.env.NODE_ENV == 'production') {
-  app.use(express.static('client/build'));
+app.use(function (request, response, next) {
+  if (process.env.NODE_ENV != 'development' && !request.secure) {
+    app.use(express.static('client/build'));
 
-  app.get('*', (req, res) => {
-    res.sendFile(path.resolve(__dirname, 'client', 'build', 'index.html'));
-  });
-}
+    app.get('*', (req, res) => {
+      res.sendFile(path.resolve(__dirname, 'client', 'build', 'index.html'));
+    });
+
+    return response.redirect('https://' + request.headers.host + request.url);
+  }
+
+  next();
+});
+
+// Serve static assets if in production
+// if (process.env.NODE_ENV == 'production') {
+//   app.use(express.static('client/build'));
+
+//   app.get('*', (req, res) => {
+//     res.sendFile(path.resolve(__dirname, 'client', 'build', 'index.html'));
+//   });
+// }
 
 // Port
 // const port = process.env.PROD_SERVER_PORT || 3000;
