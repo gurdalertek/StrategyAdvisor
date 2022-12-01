@@ -74,6 +74,8 @@ app.get('/api/getModule', async (req, res) => {
 // app.use('/api/records', require('./routes/api/records'));
 // app.use('/api/getModule', require('./routes/api/getmodel'));
 
+app.enable('trust proxy');
+
 app.use(function (request, response, next) {
   if (process.env.NODE_ENV != 'development' && !request.secure) {
     app.use(express.static('client/build'));
